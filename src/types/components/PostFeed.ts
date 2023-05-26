@@ -1,6 +1,6 @@
- import { PublicationProps } from '../entities/PublicationProps'
+import { PublicationProps } from '../entities/PublicationProps'
 
- export interface PostFeedProps {
+export interface PostFeedProps {
     photoProfileUrl: string | null | undefined,
     name: string,
     text: string | null,
@@ -12,6 +12,6 @@
     postId: string
     deletePubli?: () => void
     verifyIdAuthorPost: boolean
-    publications? : PublicationProps[]
+    publications?: PublicationProps[]
     username?: string
 }

@@ -9,6 +9,7 @@ import { PublicationProps } from '../types/entities/PublicationProps'
 import { api } from "../services/api"
 import { useAuth } from "../hooks/contexts/authContext"
 import { usePublicationManager } from "../hooks/contexts/publicationContext"
+import { Body } from '../components/Body'
 
 export const Home = function () {
     const [myData, setMyData] = useState<User>()
@@ -88,7 +89,7 @@ export const Home = function () {
     }, [publications, followingIds, myData])
 
     return (
-        <div className="w-screen min-h-screen bg-gray-900 flex">
+        <Body>
             <Menu />
 
             <Section>
@@ -102,7 +103,7 @@ export const Home = function () {
                     }
                 </div>
 
-                <div className="overflow-x-auto h-[680px] mediumScreen:[500px] smallScreen:max-h-[420px]">
+                <div className="overflow-x-auto h-[680px] mediumScreen:[500px] smallScreen:max-h-[400px]">
                     {publications &&
 
                         publications.map((data
@@ -127,6 +128,7 @@ export const Home = function () {
                     }
                 </div>
             </Section>
-        </div>
+        </Body >
+
     )
 }

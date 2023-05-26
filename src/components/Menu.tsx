@@ -2,20 +2,15 @@ import { Button } from "./Button";
 import { useState, useEffect } from 'react'
 import { FiMenu } from 'react-icons/fi'
 import { NewPublication } from "./NewPublication";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export function Menu() {
     const [showMenu, setShowMenu] = useState(false);
     const [modalPubliVisibility, setModalPubliVisiblity] = useState(false);
     const [currentTab, setCurrentTab] = useState('')
 
-    const navigate = useNavigate()
-
     const toggleModalNewPublication = () => {
-        if(window.location.pathname != "/") {
-            alert("Ops, no momento é recomendado acionar o botão de nova publicação somente na tela principal, você será redirecionado até lá!")
-            navigate("/")
-        }
+
         !modalPubliVisibility ? setModalPubliVisiblity(true) : setModalPubliVisiblity(false)
     };
 

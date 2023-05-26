@@ -104,7 +104,7 @@ export function UserDataScreen({ photoUrl, email, name, username }: UserDataUpda
     }
 
     return (
-        <div className="mx-auto mt-4 text-cyan-300 font-bold text-md">
+        <div className=" mt-4 text-cyan-300 font-bold text-md">
             <Loading isLoading={isLoading} />
 
             <div className="mx-auto mt-8 smallScreen:mt-0 ">

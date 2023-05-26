@@ -35,23 +35,26 @@ export function NewPublication({ close }: ButtonProps) {
             formData.append("photo", image);
         }
 
-        const data = await api.post("/publications/new", formData, {
-            headers: {
-                "Content-Type": "multipart/form-data",
-                Authorization: `Bearer ${token}`
-            }
-        }).then((res) => {
-            setIsLoading(false)
-            return res.data
-        })
+        try {
+            const data = await api.post("/publications/new", formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                    Authorization: `Bearer ${token}`
+                }
+            }).then(response => response.data)
 
-        setIsLoading(false)
-        navigate(`/publication?id=${data.id}`)
-        alert("Publicação realizada com sucesso")
+            setIsLoading(false)
+            navigate(`/publication?id=${data.id}`)
+            alert("Publicação realizada com sucesso")
+
+        } catch (error) {
+            console.log("Error in create publication on Component NewPublication.tsx" + error)
+            setIsLoading(false)
+        }
     }
 
     return (
-        <div className="absolute top-0 inset-0 bg-opacity-80 bg-black">
+        <div className="absolute z-10 top-0 inset-0 bg-opacity-80 bg-black">
             <Loading isLoading={isLoading} />
 
             <div

@@ -9,6 +9,8 @@ import { MagnifyingGlassPlus } from "phosphor-react"
 import { api } from "../services/api"
 import { useAuth } from "../hooks/contexts/authContext"
 import { Loading } from "../components/Loading"
+import { TopMenu } from "../components/TopMenu"
+import { Body } from "../components/Body"
 
 export const Social = function () {
     const [inputSearchValue, setInputSearchValue] = useState<string>('*')
@@ -19,7 +21,7 @@ export const Social = function () {
     const [showFollowers, setShowFollowers] = useState<boolean>(false)
     const [showFollowings, setShowFollowings] = useState<boolean>(false)
     const [isLoading, setIsLoading] = useState<boolean>(false)
-    
+
 
     const { token, user, authEmail }: any = useAuth()
 
@@ -50,7 +52,11 @@ export const Social = function () {
         const alreadyFollowing = following?.find(data => data.id === followerId)
         setIsLoading(true)
 
-        if (followerId == user) { alert("Você não pode se seguir") }
+        if (followerId == user) {
+            alert("Você não pode se seguir")
+            setIsLoading(false)
+            return
+        }
 
         if (alreadyFollowing) {
 
@@ -144,16 +150,17 @@ export const Social = function () {
     }, [following, followers, inputSearchValue])
 
     return (
-        <div className="min-w-screen min-h-screen bg-gray-900 flex overflow-hidden ">
+        <Body>
             <Menu />
             <Loading isLoading={isLoading} />
 
             <Section>
-                <div className="flex gap-12 bg-black text-gray-300 items-center justify-center mx-auto px-32 py-3 rounded-xl mobile:flex-col mobile:gap-1  mobile:px-8">
-                    <p className={`${showSearch == true ? 'text-cyan-500' : 'text-gray-300'}`} onClick={handleToggleSearch}>Buscar</p>
-                    <p className={`${showFollowers == true ? 'text-cyan-500' : 'text-gray-300'}`} onClick={handleToggleFollowers} >Seguidores</p>
-                    <p className={`${showFollowings == true ? 'text-cyan-500' : 'text-gray-300'}`} onClick={handleToggleFollowings}>Seguindo</p>
-                </div>
+                <TopMenu>
+                    <button className={`${showSearch == true ? 'text-cyan-500' : 'text-gray-300'}`} onClick={handleToggleSearch}>Buscar</button>
+                    <button className={`${showFollowers == true ? 'text-cyan-500' : 'text-gray-300'}`} onClick={handleToggleFollowers} >Seguidores</button>
+                    <button className={`${showFollowings == true ? 'text-cyan-500' : 'text-gray-300'}`} onClick={handleToggleFollowings}>Seguindo</button>
+                </TopMenu>
+
 
                 <div className={`overflow-auto h-[775px] smallScreen:max-h-[480px] mediumScreen:max-h[600px] ${showFollowings ? '' : 'hidden'} `}>
                     {
@@ -220,6 +227,7 @@ export const Social = function () {
                     }
                 </div>
             </Section>
-        </div>
+        </Body>
+
     )
 }

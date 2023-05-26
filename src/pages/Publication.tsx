@@ -10,6 +10,7 @@ import { Button } from "../components/Button";
 import { api } from "../services/api";
 import { usePublicationManager } from "../hooks/contexts/publicationContext";
 import { PublicationProps } from "../types/entities/PublicationProps";
+import { Body } from "../components/Body";
 
 export function Publication() {
     const [publiData, setPubliData] = useState<PublicationProps>()
@@ -39,7 +40,7 @@ export function Publication() {
     }, [publiData])
 
     return (
-        <div className="w-screen min-h-screen bg-gray-900 flex px-5 overflow-hidden">
+        <Body>
             <Menu />
 
             <Section>
@@ -104,6 +105,7 @@ export function Publication() {
                     </div>
                 </div>
             </Section>
-        </div>
+        </Body>
+
     )
 }

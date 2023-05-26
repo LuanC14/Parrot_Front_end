@@ -41,20 +41,23 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setData({ token: '', userID: '', email: '' })
     }
 
+
     useEffect(() => {
         const token = localStorage.getItem("@Sysmap Parrot:token")
         const userID = localStorage.getItem("@Sysmap Parrot:user")
         const email = localStorage.getItem("@Sysmap Parrot:email")
 
         if (token && userID) {
-            api.defaults.headers.common['Authorization'] = `bearer ${token}`
+  
+            api.defaults.headers.common["Authorization"] = `bearer ${token}`;
 
             setData({
                 token,
                 userID: JSON.parse(userID),
-                email: email ? email : ''
-            })
+                email: email ? email : ""
+            });
         }
+
     }, [])
 
     return (

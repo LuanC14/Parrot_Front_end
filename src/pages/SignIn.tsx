@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react"
 import { useAuth } from "../hooks/contexts/authContext"
 import { Loading } from "../components/Loading"
+import { Body } from "../components/Body"
 
 export const SignIn = function () {
     const [email, setEmail] = useState<string>("")
@@ -16,16 +17,18 @@ export const SignIn = function () {
 
     const { signIn }: any = useAuth()
 
-    function handleSignIn(event: React.FormEvent) {
+    async function handleSignIn(event: React.FormEvent) {
         setIsLoading(true)
         event.preventDefault()
-       const response =  signIn({ email, password })
 
-       setIsLoading(response)
+        const response = await signIn({ email, password })
+
+        setIsLoading(response)
     }
 
     return (
-        <div className="w-screen h-screen bg-gray-900 flex flex-col items-center justify-center">
+        <Body>
+            <div className="mx-auto my-auto w-[400px]">
             <header>
                 <Logo subtitle={'Faça o login e começe a usar'} />
             </header>
@@ -52,11 +55,14 @@ export const SignIn = function () {
                 </div>
             </form>
 
-            <footer className=" mt-9 smallScreen:mt-3">
+            <footer className=" mt-9 smallScreen:mt-3 text-center">
                 <Link to="/signup" className="text-xs text-gray-300 underline">Não possui conta? Cria uma agora!</Link>
             </footer>
 
             <Loading isLoading={isLoading} />
-        </div>
+            </div>
+
+        </Body>
+
     )
 }

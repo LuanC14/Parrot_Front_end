@@ -1,4 +1,6 @@
-export function User({ name, photoUrl, username }: UserProps) {
+import { useEffect } from 'react'
+
+export function User({ name, photoUrl, username, followers, following }: UserProps) {
 
     let photoProfileUrl;
 
@@ -8,8 +10,16 @@ export function User({ name, photoUrl, username }: UserProps) {
         photoProfileUrl = '../src/assets/User.svg'
     }
 
+    useEffect(() => {
+
+        console.log(followers)
+
+    }, [followers, following])
+
     return (
         <div className='flex items-center'>
+
+
 
             <img className='mr-4 rounded-full w-[50px] h-[50px]' src={photoProfileUrl} alt="" />
 
