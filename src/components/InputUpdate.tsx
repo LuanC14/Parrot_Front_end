@@ -21,7 +21,7 @@ export function InputUpdate({ children, onChange, title, type, placeholder, icon
                 />
             </div>
             
-            <Pencil className=" cursor-pointer mt-7 mr-3 absolute ml-[525px]" size={25} onClick={handle} />
+            <Pencil className=" text-cyan-500 cursor-pointer mt-7 mr-3 absolute ml-[525px]" size={25} onClick={handle} />
         </div>
     )
 }

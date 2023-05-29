@@ -20,7 +20,7 @@ export function InputSelect({ selectId, title, children, onChange, handle }: Inp
                 </select>
 
             </div>
-                <Pencil className=" cursor-pointer absolute ml-[265px] -mt-[41px]" size={25} onClick={handle} />
+                <Pencil className="text-cyan-500 cursor-pointer absolute ml-[265px] -mt-[41px]" size={25} onClick={handle} />
         </div>
 
 

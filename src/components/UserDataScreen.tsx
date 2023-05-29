@@ -107,7 +107,7 @@ export function UserDataScreen({ photoUrl, email, name, username }: UserDataUpda
         <div className=" mt-4 text-cyan-300 font-bold text-md">
             <Loading isLoading={isLoading} />
 
-            <div className="mx-auto mt-8 smallScreen:mt-0 ">
+            <div className="mx-auto mt-4 smallScreen:mt-0 ">
                 <img
                     className="w-[120px] h-[120px] rounded-[50%] mx-auto "
                     src={image ? image : emptyPhoto}
@@ -118,14 +118,14 @@ export function UserDataScreen({ photoUrl, email, name, username }: UserDataUpda
                     <Camera size={20} />
                 </label>
 
-                <span onClick={handlePhotoChange} className={`cursor-pointer flex items-center mr-24 -mt-4 justify-center   ${iconCheck ? '' : 'hidden'}`}>
+                <span onClick={handlePhotoChange} className={`cursor-pointer flex items-center mr-24 -mt-6 justify-center   ${iconCheck ? '' : 'hidden'}`}>
                     <Check size={20} />
                 </span>
 
                 <input onChange={handleUpload} id="avatar" className="hidden" type="file" />
             </div>
 
-            <div className="w-[515px] flex flex-col gap-3 mt-4">
+            <div className="w-[515px] flex flex-col gap-2 mt-3">
 
                 <div className="flex items-center gap-3 ">
                     <Input value={email} title="Email" type="email" icon={FiMail} disabled />

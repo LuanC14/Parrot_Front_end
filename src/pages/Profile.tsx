@@ -70,7 +70,7 @@ export const Profile = function () {
                     <button>Suas publicações</button>
                 </TopMenu>
 
-                <div className={`flex flex-col items-center gap-6 mx-auto overflow-hidden  ${showUserDataScreen == false ? 'hidden' : ''}`}>
+                <div className={`flex flex-col items-center gap-4 mx-auto  ${showUserDataScreen == false ? 'hidden' : ''}`}>
                     {userData &&
                         (
                             <UserDataScreen photoUrl={userData.avatarUri} email={userData.email} name={userData.name} username={userData.username} />

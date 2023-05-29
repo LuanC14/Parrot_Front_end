@@ -46,7 +46,7 @@ export function Publication() {
             <Section>
                 <h2 className="font-bold text-lg text-white pl-5 mb-4 mobile:text-left">Publicação</h2>
 
-                <div className="overflow-x-auto h-[780px] smallScreen:h-[490px] border-t border-gray-300">
+                <div className="overflow-x-auto h-[780px] smallScreen:h-[490px] mediumScreen:h-[580px] border-t border-gray-300">
 
                     {publiData &&
                         (
@@ -99,7 +99,7 @@ export function Publication() {
                             <TextArea value={comment} height="h-[145px]" title="Comentar" onChange={(event): any => setComment(event.target.value)} />
                         </div>
 
-                        <div className="pl-5 pb-4 mt-1 max-w-[180px]" >
+                        <div className="pl-5 pb-4 mt-2 max-w-[180px]" >
                             <Button disabled={isLoading} title={`${isLoading ? 'Carregando' : 'Comentar'}`} onClick={handleCreateComment} />
                         </div>
                     </div>
