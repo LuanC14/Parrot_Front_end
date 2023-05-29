@@ -156,50 +156,18 @@ export const Social = function () {
 
             <Section>
                 <TopMenu>
-                    <button className={`${showSearch == true ? 'text-cyan-500' : 'text-gray-300'}`} onClick={handleToggleSearch}>Buscar</button>
-                    <button className={`${showFollowers == true ? 'text-cyan-500' : 'text-gray-300'}`} onClick={handleToggleFollowers} >Seguidores</button>
-                    <button className={`${showFollowings == true ? 'text-cyan-500' : 'text-gray-300'}`} onClick={handleToggleFollowings}>Seguindo</button>
+                    <button
+                        className={`${showSearch == true ? 'text-cyan-500' : 'text-gray-300'}`}
+                        onClick={handleToggleSearch}>Buscar</button>
+                    <button
+                        className={`${showFollowers == true ? 'text-cyan-500' : 'text-gray-300'}`}
+                        onClick={handleToggleFollowers} >Seguidores</button>
+                    <button
+                        className={`${showFollowings == true ? 'text-cyan-500' : 'text-gray-300'}`}
+                        onClick={handleToggleFollowings}>Seguindo</button>
                 </TopMenu>
 
-
-                <div className={`overflow-auto h-[775px] smallScreen:max-h-[480px] mediumScreen:max-h[600px] ${showFollowings ? '' : 'hidden'} `}>
-                    {
-                        following &&
-                        following.map((data) => (
-                            <Friend
-                                name={data.name} key={data.id}
-                                username={data.username}
-                                handle={() => handleFollows(data.id)}
-                                following={data.following}
-                                follows={data.followers}
-                                photoUrl={data.avatarUri}
-                                isFollowed={verifyIsFollowed(data.id)}
-                            />
-                        ))
-                    }
-                    <p className={`text-center mt-[150px] text-white font-bold ${following ? 'hidden' : ''}`}>Você não está seguindo ninguém</p>
-                </div>
-
-                <div className={`overflow-auto h-[775px] smallScreen:max-h-[480px] mediumScreen:max-h[600px] ${showFollowers ? '' : 'hidden'}`}>
-                    {
-                        followers && followers.length > 0 &&
-                        followers.map((data) => (
-                            <Friend
-                                following={data.following}
-                                follows={data.followers}
-                                name={data.name}
-                                username={data.username}
-                                handle={() => handleFollows(data.id)}
-                                key={data.id}
-                                photoUrl={data.avatarUri}
-                                isFollowed={verifyIsFollowed(data.id)}
-                            />
-                        ))
-                    }
-                    <p className={`text-center mt-[150px] text-white font-bold ${followers.length <= 0 ? '' : 'hidden'}`}>Você ainda não possui seguidores</p>
-                </div>
-
-                <div className={`overflow-auto h-[750px] smallScreen:max-h-[480px] mediumScreen:max-h-[600px] ${showSearch ? '' : 'hidden'}`}>
+                <div className={`overflow-auto h-[750px] smallScreen:max-h-[450px] mediumScreen:max-h-[600px] ${showSearch ? '' : 'hidden'}`}>
 
                     <div className="w-[600px] mobile:w-[300px] mx-auto mobile:mx-16 pt-8">
                         <Input
@@ -225,6 +193,43 @@ export const Social = function () {
                             />
                         ))
                     }
+                </div>
+
+                <div className={`overflow-auto h-[800px] smallScreen:h-[400px] mediumScreen:h-[600px] ${showFollowings ? '' : 'hidden'} `}>
+                    {
+                        following &&
+                        following.map((data) => (
+                            <Friend
+                                name={data.name} key={data.id}
+                                username={data.username}
+                                handle={() => handleFollows(data.id)}
+                                following={data.following}
+                                follows={data.followers}
+                                photoUrl={data.avatarUri}
+                                isFollowed={verifyIsFollowed(data.id)}
+                            />
+                        ))
+                    }
+                    <p className={`text-center mt-[150px] text-white font-bold ${following ? 'hidden' : ''}`}>Você não está seguindo ninguém</p>
+                </div>
+
+                <div className={`overflow-auto h-[800px] smallScreen:h-[400px] mediumScreen:h-[600px] ${showFollowers ? '' : 'hidden'}`}>
+                    {
+                        followers && followers.length > 0 &&
+                        followers.map((data) => (
+                            <Friend
+                                following={data.following}
+                                follows={data.followers}
+                                name={data.name}
+                                username={data.username}
+                                handle={() => handleFollows(data.id)}
+                                key={data.id}
+                                photoUrl={data.avatarUri}
+                                isFollowed={verifyIsFollowed(data.id)}
+                            />
+                        ))
+                    }
+                    <p className={`text-center mt-[150px] text-white font-bold ${followers.length <= 0 ? '' : 'hidden'}`}>Você ainda não possui seguidores</p>
                 </div>
             </Section>
         </Body>

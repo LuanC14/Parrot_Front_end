@@ -25,7 +25,7 @@ export function Menu() {
     }, [])
 
     return (
-        <div className=" border-r border-gray-300">
+        <div className="border-r border-gray-300">
 
             <FiMenu onClick={handleMenuInMobile} className="hidden mobile:block absolute left-1 bg-cyan-500 rounded-lg  text-black" size={30} />
 

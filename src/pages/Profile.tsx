@@ -55,8 +55,18 @@ export const Profile = function () {
             <Section>
 
                 <TopMenu>
-                    <button className={`${showUserDataScreen == true ? 'text-cyan-500' : 'text-gray-300'}`} onClick={toggleUserData}>Dados pessoais</button>
-                    <button className={`${showBiographyScreen == true ? 'text-cyan-500' : 'text-gray-300'}`} onClick={toggleBiography}>Biografia</button>
+                    <button
+                        className={`${showUserDataScreen == true ? 'text-cyan-500' : 'text-gray-300'}`}
+                        onClick={toggleUserData}>
+                        Dados pessoais
+                    </button>
+                    
+                    <button
+                        className={`${showBiographyScreen == true ? 'text-cyan-500' : 'text-gray-300'}`}
+                        onClick={toggleBiography}>
+                        Biografia
+                    </button>
+
                     <button>Suas publicações</button>
                 </TopMenu>
 

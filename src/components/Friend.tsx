@@ -1,5 +1,4 @@
 import { Button } from "./Button"
-import { User } from "./User"
 import { useEffect } from "react"
 import * as HoverCard from '@radix-ui/react-hover-card';
 
@@ -13,9 +12,7 @@ export function Friend({ name, photoUrl, follows, following, handle, isFollowed,
         photoProfileUrl = '../src/assets/User.svg'
     }
 
-
     useEffect(() => {
-        console.log("Test")
     }, [isFollowed])
 
     return (
@@ -59,18 +56,16 @@ export function Friend({ name, photoUrl, follows, following, handle, isFollowed,
                                         <div className="text-mauve12 m-0 text-[15px] font-medium leading-[1.5]">{name}</div>
                                         <div className="text-mauve10 m-0 text-[15px] leading-[1.5]">{username ? '@' : ''}{username}</div>
                                     </div>
-                                    <div className="text-mauve12 m-0 text-[15px] leading-[1.5]">
-                                        Future data biography
-                                    </div>
+
                                     <div className={`flex gap-[5px] `}>
 
                                         <div className={"flex gap-[5px]"}>
-                                            <div className="text-mauve12 m-0 text-[15px] font-medium leading-[1.5]">{following?.length ? following?.length : 0}</div>{' '}
+                                            <div className="text-mauve12 m-0 text-[15px] font-medium leading-[1.5]">{!following ? 0 : following?.length }</div>
                                             <div className="text-mauve10 m-0 text-[15px] leading-[1.5]">Following</div>
                                         </div>
 
                                         <div className="flex gap-[5px]">
-                                            <div className="text-mauve12 m-0 text-[15px] font-medium leading-[1.5]">{follows?.length == 0 ? 0 : follows?.length}</div>{' '}
+                                            <div className="text-mauve12 m-0 text-[15px] font-medium leading-[1.5]">{!follows ? 0 : follows?.length}</div>
                                             <div className="text-mauve10 m-0 text-[15px] leading-[1.5]">Followers</div>
                                         </div>
                                     </div>
@@ -82,9 +77,6 @@ export function Friend({ name, photoUrl, follows, following, handle, isFollowed,
                     </HoverCard.Portal>
                 </HoverCard.Root>
             </div>
-
-
-            {/* <User name={name} photoUrl={photoUrl} username={username} followers={follows?.length} following={following?.length} /> */}
 
             <div className="mt-3 text-white flex flex-col text-xs ">
                 <span>{follows?.length ?? 0} Seguidores</span>

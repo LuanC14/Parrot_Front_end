@@ -103,7 +103,7 @@ export const Home = function () {
                     }
                 </div>
 
-                <div className="overflow-x-auto h-[680px] mediumScreen:[500px] smallScreen:max-h-[400px]">
+                <div className="overflow-x-auto h-[600px] mediumScreen:h-[520px] smallScreen:h-[400px]">
                     {publications &&
 
                         publications.map((data

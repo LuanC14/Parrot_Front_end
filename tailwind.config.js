@@ -46,11 +46,11 @@ export default {
 
       screens: {
         mediumScreen: {
-          raw: '(max-height:900x)',
+          raw: '(min-height:648px)',
         },
 
         smallScreen: {
-          raw: '(max-height:648px)',
+          raw: '(max-height:600px)',
         },
 
         mobile: {

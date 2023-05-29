@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useState } from 'react'
-import { XCircle, Camera } from 'phosphor-react'
+import { XCircle, Camera, TrashSimple } from 'phosphor-react'
 import { ButtonProps } from '../types/components/ButtonProps';
 import { TextArea } from './TextArea';
 import { useAuth } from '../hooks/contexts/authContext'
@@ -10,7 +10,7 @@ import { Loading } from './Loading';
 
 export function NewPublication({ close }: ButtonProps) {
     const [inputValue, setInputValue] = useState('')
-    const [image, setImage] = useState<File | undefined>();
+    const [image, setImage] = useState<File | null | undefined>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const { token }: any = useAuth()
@@ -19,8 +19,6 @@ export function NewPublication({ close }: ButtonProps) {
     function handlePhotoUpload(event: ChangeEvent<HTMLInputElement>) {
         const file = event.target.files?.[0]
         setImage(file);
-
-        alert("Foto carregada com sucesso")
     }
 
     async function handleCreatePublication(event: React.FormEvent) {
@@ -58,7 +56,7 @@ export function NewPublication({ close }: ButtonProps) {
             <Loading isLoading={isLoading} />
 
             <div
-                className="w-[900px] h-[350px] smallScreen:h-[220px] bg-gray-600 shadow-cyan-300 shadow-md absolute left-[450px] top-[75px] smallScreen:left-[200px] smallScreen:top-[12px] flex flex-col items-center justify-start pt-4 rounded" >
+                className="w-[900px] h-[350px] mediumScreen:h-[220px] smallScreen:h-[220px] bg-gray-600 shadow-cyan-300 shadow-md absolute left-[300px] top-[75px] smallScreen:left-[200px] smallScreen:top-[12px] flex flex-col items-center justify-start pt-4 rounded" >
 
                 <form className='flex flex-col gap-2'>
 
@@ -66,11 +64,17 @@ export function NewPublication({ close }: ButtonProps) {
 
                     <TextArea onChange={(event) => setInputValue(event.target.value)} />
 
+
                     <div className='flex gap-2 justify-between items-start'>
                         <label htmlFor="photo">
                             <Camera size={20} className='text-white cursor-pointer' />
                             <input type="file" id='photo' className='hidden' onChange={handlePhotoUpload} />
                         </label>
+
+                        <p className={`flex items-center gap-1 text-white ${image ? '' : 'hidden'}`}>
+                            {image?.name}
+                            <TrashSimple onClick={() => setImage(null)} />
+                        </p>
 
                         <div className=''>
                             <Button title='Publicar' onClick={handleCreatePublication} />
